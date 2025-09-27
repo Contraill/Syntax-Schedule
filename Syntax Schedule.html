@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Weekly IT Class Schedule — A4 Optimized</title>
+  <style>
+    @page { size: A4; margin: 12mm; }
+    html,body{height:100%;margin:0;padding:0;-webkit-print-color-adjust: exact;print-color-adjust: exact;}
+    body{background:#111;}
+    .page{box-sizing:border-box;width:210mm;height:297mm;padding:14mm 18mm;display:flex;flex-direction:column;font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background: linear-gradient(180deg,#0f1113 0%, #080808 100%);color:#dbeefc;position:relative;}
+    .page::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:
+      linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 28mm 28mm, 28mm 28mm;
+      mix-blend-mode: screen;
+      filter: blur(0.5px);}
+    .container{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;}
+    .title-row{display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+    .title{font-size:22pt;font-weight:700;letter-spacing:0.6px;color:#d6ffff;text-transform:uppercase;}
+    .schedule{display:grid;grid-template-columns: 50mm repeat(5, 1fr);grid-template-rows:28px repeat(10, 1fr);gap:4px;flex:1;min-height:0;align-items:stretch;}
+    .header-cell{background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11pt;letter-spacing:0.3px;color:#cfeff6;box-shadow:0 1px 4px rgba(0,0,0,0.5) inset;border:1px solid rgba(0,255,255,0.04);}
+    .time-cell{display:flex;align-items:center;justify-content:center;font-size:10pt;font-weight:600;color:#9fbfc7;background:transparent;}
+    .slot{border-radius:6px;min-height:24px;position:relative;overflow:hidden;padding:3px 6px 4px 12px;color:#fff;font-weight:600;transition: transform 0.15s;background:#1c1c1c;}
+    .slot::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:6px;border-radius:3px;opacity:0.95;}
+    .slot .inner{padding-left:6px;font-size:9pt;line-height:1.15;padding-top: 5px;}
+    .slot .room{display:block;font-weight:500;font-size:8.5pt;color:#f0f0f0;margin-top:5px;}
+    .slot:hover{transform:scale(1.02);}
+    .day-label{font-size:10pt;text-align:center;font-weight:600;}
+    .legend{margin-top:24px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px 24px;font-size:10.5pt;align-items:center;}
+    .legend-item{display:flex;align-items:center;gap:8px;line-height:1.4;}
+    .legend-color{width:18px;height:18px;border-radius:5px;flex-shrink:0}
+    .slot.Ethic::before{background:#088fdb;}
+    .slot.Network::before{background:#DB04E0;}
+    .slot.Multi::before{background:#08fd5a;}
+    .slot.Engineer::before{background:#ffa201;}
+    .slot.Server::before{background:#FB0845;}
+    .slot.Training::before{background:#ffffff;}
+    .slot.Project::before{background:#FDF204;}
+    .legend-color.Ethic{background:#088FDB;}
+    .legend-color.Network{background:#DB04E0;}
+    .legend-color.Multi{background:#08fd5a;}
+    .legend-color.Engineer{background:#FDB408;}
+    .legend-color.Server{background:#FB0845;}
+    .legend-color.Training{background:#04DB8F;}
+    .legend-color.Project{background:#FDF204;}
+    @media print{
+      .page::before{background-size:28mm 28mm,28mm 28mm;filter:none}
+      .slot{box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="container">
+    <div class="title-row"><div class="title">Syntax Schedule</div></div>
+    <br><br>
+    <div class="schedule" role="table" aria-label="Weekly schedule">
+      <!-- Headers -->
+      <div class="header-cell" style="grid-column:2;grid-row:1"><div class="day-label">Monday</div></div>
+      <div class="header-cell" style="grid-column:3;grid-row:1"><div class="day-label">Tuesday</div></div>
+      <div class="header-cell" style="grid-column:4;grid-row:1"><div class="day-label">Wednesday</div></div>
+      <div class="header-cell" style="grid-column:5;grid-row:1"><div class="day-label">Thursday</div></div>
+      <div class="header-cell" style="grid-column:6;grid-row:1"><div class="day-label">Friday</div></div>
+
+      <!-- Times -->
+      <div class="time-cell" style="grid-column:1;grid-row:2">08:30</div>
+      <div class="time-cell" style="grid-column:1;grid-row:3">09:30</div>
+      <div class="time-cell" style="grid-column:1;grid-row:4">10:30</div>
+      <div class="time-cell" style="grid-column:1;grid-row:5">11:30</div>
+      <div class="time-cell" style="grid-column:1;grid-row:6">12:30</div>
+      <div class="time-cell" style="grid-column:1;grid-row:7">13:30</div>
+      <div class="time-cell" style="grid-column:1;grid-row:8">14:30</div>
+      <div class="time-cell" style="grid-column:1;grid-row:9">15:30</div>
+      <div class="time-cell" style="grid-column:1;grid-row:10">16:30</div>
+      <div class="time-cell" style="grid-column:1;grid-row:11">17:30</div>
+
+      <!-- Monday -->
+      <div class="slot Ethic" style="grid-column:2;grid-row:2"><div class="inner">ITEC109<div class="room">CL 211</div></div></div>
+      <div class="slot Ethic" style="grid-column:2;grid-row:3"><div class="inner">ITEC109<div class="room">CL 211</div></div></div>
+      <div class="slot Network" style="grid-column:2;grid-row:4"><div class="inner">ITEC310<div class="room">CL 212</div></div></div>
+      <div class="slot Network" style="grid-column:2;grid-row:5"><div class="inner">ITEC310<div class="room">CL 212</div></div></div>
+
+      <!-- Tuesday -->
+      <div class="slot Network" style="grid-column:3;grid-row:4"><div class="inner">ITEC310<div class="room">CT 124</div></div></div>
+      <div class="slot Engineer" style="grid-column:3;grid-row:8"><div class="inner">ITEC316<div class="room">CT 001</div></div></div>
+      <div class="slot Engineer" style="grid-column:3;grid-row:9"><div class="inner">ITEC316<div class="room">CT 001</div></div></div>
+
+      <!-- Wednesday -->
+      <div class="slot Multi" style="grid-column:4;grid-row:8"><div class="inner">ITEC314<div class="room">CT 124</div></div></div>
+
+      <!-- Thursday -->
+      <div class="slot Project" style="grid-column:5;grid-row:2"><div class="inner">ITEC403<div class="room">CT 226</div></div></div>
+      <div class="slot Server" style="grid-column:5;grid-row:4"><div class="inner">ITEC327<div class="room">CT 001</div></div></div>
+      <div class="slot Server" style="grid-column:5;grid-row:5"><div class="inner">ITEC327<div class="room">CT 001</div></div></div>
+      <div class="slot Server" style="grid-column:5;grid-row:6"><div class="inner">ITEC327<div class="room">CT 001</div></div></div>
+      <div class="slot Ethic" style="grid-column:5;grid-row:7"><div class="inner">ITEC109<div class="room">CT 001</div></div></div>
+      <div class="slot Engineer" style="grid-column:5;grid-row:8"><div class="inner">ITEC316<div class="room">CT 001</div></div></div>
+      <div class="slot Engineer" style="grid-column:5;grid-row:9"><div class="inner">ITEC316<div class="room">CT 001</div></div></div>
+      <div class="slot Network" style="grid-column:5;grid-row:10"><div class="inner">ITEC310<div class="room">CTL 219</div></div></div>
+      <div class="slot Network" style="grid-column:5;grid-row:11"><div class="inner">ITEC310<div class="room">CTL 219</div></div></div>
+
+      <!-- Friday -->
+      <div class="slot Server" style="grid-column:6;grid-row:2"><div class="inner">ITEC327<div class="room">CTL 221</div></div></div>
+      <div class="slot Server" style="grid-column:6;grid-row:3"><div class="inner">ITEC327<div class="room">CTL 221</div></div></div>
+      <div class="slot Multi" style="grid-column:6;grid-row:4"><div class="inner">ITEC314<div class="room">CT 001</div></div></div>
+      <div class="slot Multi" style="grid-column:6;grid-row:5"><div class="inner">ITEC314<div class="room">CT 001</div></div></div>
+      <div class="slot Multi" style="grid-column:6;grid-row:8"><div class="inner">ITEC314<div class="room">CTL 006</div></div></div>
+      <div class="slot Multi" style="grid-column:6;grid-row:9"><div class="inner">ITEC314<div class="room">CTL 006</div></div></div>
+    </div>
+    <br><br>
+    <!-- Legend -->
+    <div class="legend">
+      <div class="legend-item"><div class="legend-color Ethic"></div>ITEC109 - Ethical and Social Issues in Information Systems</div>
+      <div class="legend-item"><div class="legend-color Network"></div>ITEC310 - Computer Networks - II</div>
+      <div class="legend-item"><div class="legend-color Multi"></div>ITEC314 - Multi-Platform Programming</div>
+      <div class="legend-item"><div class="legend-color Engineer"></div>ITEC316 - Software Engineering</div>
+      <div class="legend-item"><div class="legend-color Server"></div>ITEC327 - Server-Side Internet and Web Programming</div>
+      <div class="legend-item"><div class="legend-color Training"></div>ITEC400 - Summer Training</div>
+      <div class="legend-item"><div class="legend-color Project"></div>ITEC403 - Graduation Project Orientation</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
