@@ -1,7 +1,7 @@
 # 🗓️ Syntax Schedule
 
 A modern, printable **HTML/CSS class schedule** optimized for both screen and paper.  
-It uses a **CSS grid layout**, **gradient-colored course indicators**, and **print-optimized styles** to produce a clean and professional timetable.
+It uses a **CSS grid layout**, and **print-optimized styles** to produce a clean and professional timetable.
 
 ---
 
