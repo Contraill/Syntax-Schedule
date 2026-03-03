@@ -94,3 +94,13 @@ For best output:
 - Both templates are standalone static files
 - Safe to edit in any text editor (VS Code, Sublime, etc.)
 - You can duplicate templates for each semester/program
+
+## 🧪 Print Tip (Tested)
+
+If the layout spills into a second page:
+
+- Set print **Scale to 93%**
+- Print only **Page 1**
+
+This keeps the schedule clean on a single A4 page.
+
