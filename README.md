@@ -1,26 +1,96 @@
-# 📅 Syntax Schedule
+# 📅 Syntax Schedule Templates
 
-A clean, print-ready weekly course schedule built with pure HTML & CSS.  
-Designed for easy customization, clear visual layout, and high-quality printing.
+Print-ready weekly schedule templates (A4) built with pure **HTML + CSS**.
 
----
+This repository includes multiple visual timetable templates:
 
-## ✨ Features
+- `Syntax Schedule.html` → main IT schedule template
+- `PhysioFlow.html` → physiotherapy-focused schedule template
 
-- 🗓️ **Weekly Grid:** Displays full course schedule from Monday to Friday  
-- 📏 **Print Optimized:** Perfect A4 layout with correct scaling and spacing  
-- 🎨 **Color-Coded Courses:** Each course is visually separated with vibrant colors  
-- 🖨️ **Printer Friendly:** Includes background grid and proper `print-color-adjust` for accurate output  
-- ⚙️ **Pure HTML & CSS:** No dependencies, lightweight and fast
+No framework, no build step — just open in browser and print.
 
 ---
 
-## 🖨️ Printing Tips
+## 🚀 Quick Start
 
-- In the print dialog:
-  - ✅ Enable **“Background Graphics”**
-  - ✅ Set **Scale** to `100%` or `Actual Size`
-  - ✅ Choose **Default** or **No margins**
-- Recommended paper size: **A4**
+1. Clone or download the repo
+2. Open one of these files in your browser:
+   - `Syntax Schedule.html`
+   - `PhysioFlow.html`
+3. Edit course blocks directly in the HTML
+4. Print to PDF / paper (A4)
 
 ---
+
+## 🧩 How to Edit a Class Block
+
+Each lesson is one `<div class="class-block ...">` item.
+
+Example:
+
+```html
+<div class="class-block Blue" style="grid-column:2; grid-row:3">
+  <div class="class-text">ITEC413
+    <div class="classroom">CT 223</div>
+  </div>
+</div>
+```
+
+### Grid Mapping
+
+- **Columns (days)**
+  - `2 = Monday`
+  - `3 = Tuesday`
+  - `4 = Wednesday`
+  - `5 = Thursday`
+  - `6 = Friday`
+
+- **Rows (time slots)**
+  - `2 = 08:30`
+  - `3 = 09:30`
+  - `4 = 10:30`
+  - `5 = 11:30`
+  - `6 = 12:30`
+  - `7 = 13:30`
+  - `8 = 14:30`
+  - `9 = 15:30`
+  - `10 = 16:30`
+  - `11 = 17:30` *(if used in file)*
+
+---
+
+## 🎨 Color System
+
+Block colors are controlled by CSS classes (e.g. `Blue`, `Purple`, `Green`, ...).
+
+To add a new color:
+
+1. Copy an existing color rule in CSS
+2. Rename it
+3. Use that class name in your block
+
+---
+
+## 🖨️ Print Settings (Important)
+
+For best output:
+
+- Enable **Background graphics**
+- Scale: **100% / Actual size**
+- Margins: **Default** or **None**
+- Paper: **A4**
+
+---
+
+## 📁 File Overview
+
+- `Syntax Schedule.html` — dark IT-style timetable
+- `PhysioFlow.html` — cleaner health-science timetable variant
+
+---
+
+## ✅ Notes
+
+- Both templates are standalone static files
+- Safe to edit in any text editor (VS Code, Sublime, etc.)
+- You can duplicate templates for each semester/program
