@@ -99,7 +99,7 @@ For best output:
 
 If the layout spills into a second page:
 
-- Set print **Scale to 93%**
+- Set print **Scale to 97%**
 - Print only **Page 1**
 
 This keeps the schedule clean on a single A4 page.
