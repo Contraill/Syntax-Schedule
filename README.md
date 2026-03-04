@@ -76,8 +76,8 @@ To add a new color:
 For best output:
 
 - Enable **Background graphics**
-- Scale: **100% / Actual size**
-- Margins: **Default** or **None**
+- Scale: **97%**
+- Margins: **None**
 - Paper: **A4**
 
 ---
@@ -94,13 +94,4 @@ For best output:
 - Both templates are standalone static files
 - Safe to edit in any text editor (VS Code, Sublime, etc.)
 - You can duplicate templates for each semester/program
-
-## 🧪 Print Tip (Tested)
-
-If the layout spills into a second page:
-
-- Set print **Scale to 97%**
-- Print only **Page 1**
-
-This keeps the schedule clean on a single A4 page.
 
