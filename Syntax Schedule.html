@@ -19,6 +19,7 @@
   ║          style="grid-column:COL; grid-row:ROW">                  ║
   ║       <div class="class-text">COURSE CODE                        ║
   ║         <div class="classroom">ROOM</div>                        ║
+  ║         <span class="end-time">ends HH:MM</span>                 ║
   ║       </div>                                                     ║
   ║     </div>                                                       ║
   ║                                                                  ║
@@ -99,11 +100,11 @@
 
     /* ── SCHEDULE GRID ───────────────────────────────── */
     /* Columns: [time] [Mon] [Tue] [Wed] [Thu] [Fri]     */
-    /* Rows:    [days] [08:30] [09:30] ... [16:30]        */
+    /* Rows:    [days] [08:30] [09:30] ... [17:30]        */
     .schedule {
       display: grid;
       grid-template-columns: 28mm repeat(5, 1fr);
-      grid-template-rows: 8mm repeat(9, 18mm);
+      grid-template-rows: 8mm repeat(10, 18mm);
       gap: 4px;
       width: 100%;
     }
@@ -157,7 +158,7 @@
       pointer-events: none; z-index: 1;
     }
 
-    /* Course code and classroom text */
+    /* Course code, classroom, end time */
     .class-text {
       font-size: 9pt; line-height: 1.2;
       display: flex; flex-direction: column; justify-content: center;
@@ -169,7 +170,6 @@
       color: rgba(255, 255, 255, 0.45);
       margin-top: 2px;
     }
-
     .end-time {
       display: block;
       font-size: 7pt; font-weight: 400;
@@ -256,7 +256,7 @@
       <div class="day-label" style="grid-column:5; grid-row:1">Thursday</div>
       <div class="day-label" style="grid-column:6; grid-row:1">Friday</div>
 
-      <!-- Time labels  (grid-row: 2=08:30 … 10=16:30) -->
+      <!-- Time labels  (grid-row: 2=08:30 … 11=17:30) -->
       <div class="time-label" style="grid-column:1; grid-row:2">08:30</div>
       <div class="time-label" style="grid-column:1; grid-row:3">09:30</div>
       <div class="time-label" style="grid-column:1; grid-row:4">10:30</div>
@@ -266,38 +266,43 @@
       <div class="time-label" style="grid-column:1; grid-row:8">14:30</div>
       <div class="time-label" style="grid-column:1; grid-row:9">15:30</div>
       <div class="time-label" style="grid-column:1; grid-row:10">16:30</div>
+      <div class="time-label" style="grid-column:1; grid-row:11">17:30</div>
 
       <!-- ── CLASS BLOCKS ─────────────────────────────── -->
       <!-- Format: class="class-block COLOR"  grid-column=DAY  grid-row=TIME -->
 
       <!-- Monday -->
-      <div class="class-block Green"  style="grid-column:2; grid-row:4"><div class="class-text">ITEC415<div class="classroom">CTL 005</div></div></div>
-      <div class="class-block Green"  style="grid-column:2; grid-row:5"><div class="class-text">ITEC415<div class="classroom">CTL 005<span class="end-time">ends 12:20</span></div></div></div>
-      <div class="class-block Blue"   style="grid-column:2; grid-row:6"><div class="class-text">ITEC413<div class="classroom">CTL 005<span class="end-time">ends 13:20</span></div></div></div>
-      <div class="class-block Blue"   style="grid-column:2; grid-row:7"><div class="class-text">ITEC413<div class="classroom">CTL 005<span class="end-time">ends 14:20</span></div></div></div>
-      <div class="class-block Yellow" style="grid-column:2; grid-row:10"><div class="class-text">ITEC404<div class="classroom">CT 124<span class="end-time">ends 17:20</span></div></div></div>
+      <div class="class-block Green"  style="grid-column:2; grid-row:4"><div class="class-text">ITEC415<div class="classroom">CTL 005</div><span class="end-time">ends 11:20</span></div></div>
+      <div class="class-block Green"  style="grid-column:2; grid-row:5"><div class="class-text">ITEC415<div class="classroom">CTL 005</div><span class="end-time">ends 12:20</span></div></div>
+      <div class="class-block Blue"   style="grid-column:2; grid-row:6"><div class="class-text">ITEC413<div class="classroom">CTL 005</div><span class="end-time">ends 13:20</span></div></div>
+      <div class="class-block Blue"   style="grid-column:2; grid-row:7"><div class="class-text">ITEC413<div class="classroom">CTL 005</div><span class="end-time">ends 14:20</span></div></div>
+      <div class="class-block Yellow" style="grid-column:2; grid-row:10"><div class="class-text">ITEC404<div class="classroom">CT 124</div><span class="end-time">ends 17:20</span></div></div>
 
       <!-- Tuesday -->
-      <div class="class-block Blue"   style="grid-column:3; grid-row:3"><div class="class-text">ITEC413<div class="classroom">CT 223<span class="end-time">ends 10:20</span></div></div></div>
-      <div class="class-block Green"  style="grid-column:3; grid-row:4"><div class="class-text">ITEC415<div class="classroom">CT 124<span class="end-time">ends 11:20</span></div></div></div>
-      <div class="class-block Green"  style="grid-column:3; grid-row:5"><div class="class-text">ITEC415<div class="classroom">CT 124<span class="end-time">ends 12:20</span></div></div></div>
-      <div class="class-block Orange" style="grid-column:3; grid-row:6"><div class="class-text">ITEC421<div class="classroom">CT 223<span class="end-time">ends 13:20</span></div></div></div>
-      <div class="class-block Orange" style="grid-column:3; grid-row:7"><div class="class-text">ITEC421<div class="classroom">CT 223<span class="end-time">ends 14:20</span></div></div></div>
-      <div class="class-block Red"    style="grid-column:3; grid-row:8"><div class="class-text">SGBL103<div class="classroom">SBF 102<span class="end-time">ends 15:20</span></div></div></div>
-      <div class="class-block Red"    style="grid-column:3; grid-row:9"><div class="class-text">SGBL103<div class="classroom">SBF 102<span class="end-time">ends 16:20</span></div></div></div>
-      <div class="class-block Red"    style="grid-column:3; grid-row:10"><div class="class-text">SGBL103<div class="classroom">SBF 102<span class="end-time">ends 17:20</span></div></div></div>
+      <div class="class-block Blue"   style="grid-column:3; grid-row:3"><div class="class-text">ITEC413<div class="classroom">CT 223</div><span class="end-time">ends 10:20</span></div></div>
+      <div class="class-block Green"  style="grid-column:3; grid-row:4"><div class="class-text">ITEC415<div class="classroom">CT 124</div><span class="end-time">ends 11:20</span></div></div>
+      <div class="class-block Green"  style="grid-column:3; grid-row:5"><div class="class-text">ITEC415<div class="classroom">CT 124</div><span class="end-time">ends 12:20</span></div></div>
+      <div class="class-block Orange" style="grid-column:3; grid-row:6"><div class="class-text">ITEC421<div class="classroom">CT 223</div><span class="end-time">ends 13:20</span></div></div>
+      <div class="class-block Orange" style="grid-column:3; grid-row:7"><div class="class-text">ITEC421<div class="classroom">CT 223</div><span class="end-time">ends 14:20</span></div></div>
+      <div class="class-block Red"    style="grid-column:3; grid-row:8"><div class="class-text">SGBL103<div class="classroom">SBF 102</div><span class="end-time">ends 15:20</span></div></div>
+      <div class="class-block Red"    style="grid-column:3; grid-row:9"><div class="class-text">SGBL103<div class="classroom">SBF 102</div><span class="end-time">ends 16:20</span></div></div>
+      <div class="class-block Red"    style="grid-column:3; grid-row:10"><div class="class-text">SGBL103<div class="classroom">SBF 102</div><span class="end-time">ends 17:20</span></div></div>
 
       <!-- Wednesday -->
-      <div class="class-block Blue"   style="grid-column:4; grid-row:2"><div class="class-text">ITEC413<div class="classroom">CT 223<span class="end-time">ends 09:20</span></div></div></div>
-      <div class="class-block Blue"   style="grid-column:4; grid-row:3"><div class="class-text">ITEC413<div class="classroom">CT 223<span class="end-time">ends 10:20</span></div></div></div>
-      <div class="class-block Orange" style="grid-column:4; grid-row:6"><div class="class-text">ITEC421<div class="classroom">CT 124<span class="end-time">ends 13:20</span></div></div></div>
-      <div class="class-block Orange" style="grid-column:4; grid-row:7"><div class="class-text">ITEC421<div class="classroom">CT 124<span class="end-time">ends 14:20</span></div></div></div>
-      <div class="class-block Purple" style="grid-column:4; grid-row:8"><div class="class-text">ITEC445<div class="classroom">CT 223<span class="end-time">ends 15:20</span></div></div></div>
-      <div class="class-block Purple" style="grid-column:4; grid-row:9"><div class="class-text">ITEC445<div class="classroom">CT 223<span class="end-time">ends 16:20</span></div></div></div>
+      <div class="class-block Blue"   style="grid-column:4; grid-row:2"><div class="class-text">ITEC413<div class="classroom">CT 223</div><span class="end-time">ends 09:20</span></div></div>
+      <div class="class-block Blue"   style="grid-column:4; grid-row:3"><div class="class-text">ITEC413<div class="classroom">CT 223</div><span class="end-time">ends 10:20</span></div></div>
+      <div class="class-block Orange" style="grid-column:4; grid-row:6"><div class="class-text">ITEC421<div class="classroom">CT 124</div><span class="end-time">ends 13:20</span></div></div>
+      <div class="class-block Orange" style="grid-column:4; grid-row:7"><div class="class-text">ITEC421<div class="classroom">CT 124</div><span class="end-time">ends 14:20</span></div></div>
+      <div class="class-block Purple" style="grid-column:4; grid-row:8"><div class="class-text">ITEC445<div class="classroom">CT 223</div><span class="end-time">ends 15:20</span></div></div>
+      <div class="class-block Purple" style="grid-column:4; grid-row:9"><div class="class-text">ITEC445<div class="classroom">CT 223</div><span class="end-time">ends 16:20</span></div></div>
 
       <!-- Thursday -->
-      <div class="class-block Purple" style="grid-column:5; grid-row:2"><div class="class-text">ITEC445<div class="classroom">CTL 221<span class="end-time">ends 09:20</span></div></div></div>
-      <div class="class-block Purple" style="grid-column:5; grid-row:3"><div class="class-text">ITEC445<div class="classroom">CTL 221<span class="end-time">ends 10:20</span></div></div></div>
+      <div class="class-block Purple" style="grid-column:5; grid-row:2"><div class="class-text">ITEC445<div class="classroom">CTL 221</div><span class="end-time">ends 09:20</span></div></div>
+      <div class="class-block Purple" style="grid-column:5; grid-row:3"><div class="class-text">ITEC445<div class="classroom">CTL 221</div><span class="end-time">ends 10:20</span></div></div>
+
+      <!-- Friday -->
+      <div class="class-block Purple" style="grid-column:6; grid-row:2"><div class="class-text">ITEC445<div class="classroom">CTL 219</div><span class="end-time">ends 09:20</span></div></div>
+      <div class="class-block Purple" style="grid-column:6; grid-row:3"><div class="class-text">ITEC445<div class="classroom">CTL 219</div><span class="end-time">ends 10:20</span></div></div>
 
     </div>
 
