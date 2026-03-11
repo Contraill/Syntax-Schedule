@@ -28,9 +28,9 @@
   ║                   5 = Thursday  6 = Friday                       ║
   ║                                                                  ║
   ║  4. ROW (time slot)                                              ║
-  ║     grid-row:  2 = 08:30   3 = 09:30   4 = 10:30   5 = 11:30     ║
-  ║                6 = 12:30   7 = 13:30   8 = 14:30   9 = 15:30     ║
-  ║               10 = 16:30  11 = 17:30                             ║
+  ║     grid-row:  2 = 08:30   3 = 09:30   4 = 10:30   5 = 11:30    ║
+  ║                6 = 12:30   7 = 13:30   8 = 14:30   9 = 15:30    ║
+  ║               10 = 16:30                                         ║
   ║                                                                  ║
   ║  5. COLORS  (class="class-block COLOR")                          ║
   ║     Blue · Purple · Green · Orange · Red · White · Yellow        ║
@@ -100,11 +100,11 @@
 
     /* ── SCHEDULE GRID ───────────────────────────────── */
     /* Columns: [time] [Mon] [Tue] [Wed] [Thu] [Fri]     */
-    /* Rows:    [days] [08:30] [09:30] ... [17:30]        */
+    /* Rows:    [days] [08:30] [09:30] ... [16:30]        */
     .schedule {
       display: grid;
       grid-template-columns: 28mm repeat(5, 1fr);
-      grid-template-rows: 8mm repeat(10, 18mm);
+      grid-template-rows: 8mm repeat(9, 18mm);
       gap: 4px;
       width: 100%;
     }
@@ -256,7 +256,7 @@
       <div class="day-label" style="grid-column:5; grid-row:1">Thursday</div>
       <div class="day-label" style="grid-column:6; grid-row:1">Friday</div>
 
-      <!-- Time labels  (grid-row: 2=08:30 … 11=17:30) -->
+      <!-- Time labels  (grid-row: 2=08:30 … 10=16:30) -->
       <div class="time-label" style="grid-column:1; grid-row:2">08:30</div>
       <div class="time-label" style="grid-column:1; grid-row:3">09:30</div>
       <div class="time-label" style="grid-column:1; grid-row:4">10:30</div>
@@ -266,7 +266,6 @@
       <div class="time-label" style="grid-column:1; grid-row:8">14:30</div>
       <div class="time-label" style="grid-column:1; grid-row:9">15:30</div>
       <div class="time-label" style="grid-column:1; grid-row:10">16:30</div>
-      <div class="time-label" style="grid-column:1; grid-row:11">17:30</div>
 
       <!-- ── CLASS BLOCKS ─────────────────────────────── -->
       <!-- Format: class="class-block COLOR"  grid-column=DAY  grid-row=TIME -->
@@ -293,16 +292,14 @@
       <div class="class-block Blue"   style="grid-column:4; grid-row:3"><div class="class-text">ITEC413<div class="classroom">CT 223</div><span class="end-time">ends 10:20</span></div></div>
       <div class="class-block Orange" style="grid-column:4; grid-row:6"><div class="class-text">ITEC421<div class="classroom">CT 124</div><span class="end-time">ends 13:20</span></div></div>
       <div class="class-block Orange" style="grid-column:4; grid-row:7"><div class="class-text">ITEC421<div class="classroom">CT 124</div><span class="end-time">ends 14:20</span></div></div>
-      <div class="class-block Purple" style="grid-column:4; grid-row:8"><div class="class-text">ITEC445<div class="classroom">CT 223</div><span class="end-time">ends 15:20</span></div></div>
-      <div class="class-block Purple" style="grid-column:4; grid-row:9"><div class="class-text">ITEC445<div class="classroom">CT 223</div><span class="end-time">ends 16:20</span></div></div>
+      <div class="class-block Purple" style="grid-column:4; grid-row:8"><div class="class-text">ITEC445<div class="classroom">CTL 220</div><span class="end-time">ends 15:20</span></div></div>
+      <div class="class-block Purple" style="grid-column:4; grid-row:9"><div class="class-text">ITEC445<div class="classroom">CTL 220</div><span class="end-time">ends 16:20</span></div></div>
 
       <!-- Thursday -->
       <div class="class-block Purple" style="grid-column:5; grid-row:2"><div class="class-text">ITEC445<div class="classroom">CTL 221</div><span class="end-time">ends 09:20</span></div></div>
       <div class="class-block Purple" style="grid-column:5; grid-row:3"><div class="class-text">ITEC445<div class="classroom">CTL 221</div><span class="end-time">ends 10:20</span></div></div>
 
-      <!-- Friday -->
-      <div class="class-block Purple" style="grid-column:6; grid-row:2"><div class="class-text">ITEC445<div class="classroom">CTL 219</div><span class="end-time">ends 09:20</span></div></div>
-      <div class="class-block Purple" style="grid-column:6; grid-row:3"><div class="class-text">ITEC445<div class="classroom">CTL 219</div><span class="end-time">ends 10:20</span></div></div>
+      <!-- Friday — empty -->
 
     </div>
 
