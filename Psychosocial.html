@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Psychosocial</title>
+
+  <!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║                     HOW TO EDIT THIS FILE                        ║
+  ╠══════════════════════════════════════════════════════════════════╣
+  ║                                                                  ║
+  ║  1. PAGE TITLE                                                   ║
+  ║     Find "Psychosocial" and replace with your title.             ║
+  ║                                                                  ║
+  ║  2. ADD / REMOVE A CLASS BLOCK                                   ║
+  ║     Each class is one line:                                      ║
+  ║                                                                  ║
+  ║     <div class="class-block COLOR"                               ║
+  ║          style="grid-column:COL; grid-row:ROW">                  ║
+  ║       <div class="class-text">COURSE CODE                        ║
+  ║         <div class="classroom">ROOM</div>                        ║
+  ║         <span class="end-time">ends HH:MM</span>                 ║
+  ║       </div>                                                     ║
+  ║     </div>                                                       ║
+  ║                                                                  ║
+  ║  3. COLUMN (day of week)                                         ║
+  ║     grid-column:  2 = Monday    3 = Tuesday   4 = Wednesday      ║
+  ║                   5 = Thursday  6 = Friday                       ║
+  ║                                                                  ║
+  ║  4. ROW (time slot)                                              ║
+  ║     grid-row:  2 = 08:30   3 = 09:30   4 = 10:30   5 = 11:30     ║
+  ║                6 = 12:30   7 = 13:30   8 = 14:30   9 = 15:30     ║
+  ║               10 = 16:30  11 = 17:30  12 = 18:30                 ║
+  ║                                                                  ║
+  ║  5. COLORS  (class="class-block COLOR")                          ║
+  ║     Blue · Purple · Green · Orange · Red · White · Yellow        ║
+  ║     To add a new color, copy a line from the COLOR DEFINITIONS   ║
+  ║     section in the CSS and give it a new name.                   ║
+  ║                                                                  ║
+  ║  6. COURSE LIST (bottom panel)                                   ║
+  ║     Edit the course-list-item lines at the bottom of the file.   ║
+  ║                                                                  ║
+  ╚══════════════════════════════════════════════════════════════════╝
+  -->
+
+  <style>
+
+    /* ── PAGE SETUP ──────────────────────────────────── */
+    @page { size: A4; margin: 12mm; }
+
+    html {
+      margin: 0; padding: 0;
+      background: #110b0b;
+    }
+    body {
+      margin: 0; padding: 20px 0;
+      display: flex; justify-content: center; align-items: flex-start;
+      background: #110b0b;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page {
+      box-sizing: border-box;
+      width: 210mm; height: 297mm;
+      padding: 8mm 14mm;
+      display: flex; flex-direction: column;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(180deg, #140d0d 0%, #080808 100%);
+      color: #fce8e8;
+      position: relative;
+    }
+
+    /* ── BACKGROUND GRID ─────────────────────────────── */
+    #background-grid {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── CONTENT WRAPPER ─────────────────────────────── */
+    .content-wrapper {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      padding-top: 2mm;
+    }
+
+    /* ── PAGE TITLE ──────────────────────────────────── */
+    .title-row {
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 0 8mm;
+    }
+    .title {
+      font-size: 22pt; font-weight: 700;
+      letter-spacing: 0.6px;
+      color: #ffe8e8;
+      text-transform: uppercase;
+    }
+
+    /* ── SCHEDULE GRID ───────────────────────────────── */
+    /* Columns: [time] [Mon] [Tue] [Wed] [Thu] [Fri]     */
+    /* Rows:    [days] [08:30] [09:30] ... [18:30]        */
+    .schedule {
+      display: grid;
+      grid-template-columns: 28mm repeat(5, 1fr);
+      grid-template-rows: 6mm repeat(11, 18mm);
+      gap: 4px;
+      width: 100%;
+    }
+
+    /* ── DAY LABELS (top row) ────────────────────────── */
+    .day-label {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10pt; font-weight: 700;
+      letter-spacing: 0.3px;
+      color: #f5d0d0;
+      margin-bottom: 6px;
+    }
+
+    /* ── TIME LABELS (left column) ───────────────────── */
+    .time-label {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10pt; font-weight: 700;
+      letter-spacing: 0.3px;
+      color: #f5d0d0;
+    }
+
+    /* ── CLASS BLOCKS ────────────────────────────────── */
+    .class-block {
+      border-radius: 10px;
+      position: relative; overflow: hidden;
+      padding: 0 8px 0 14px;
+      margin: 3px;
+      display: flex; align-items: center;
+      color: #fff; font-weight: 600;
+      background: rgba(35, 15, 15, 0.25);
+      backdrop-filter: blur(4px) saturate(1.2);
+      -webkit-backdrop-filter: blur(4px) saturate(1.2);
+      border: 1px solid rgba(255, 120, 120, 0.12);
+      transition: transform 0.15s;
+    }
+    .class-block:hover { transform: scale(1.015); }
+
+    /* Left color bar */
+    .class-block::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px;
+      z-index: 2;
+    }
+
+    /* Glass shine */
+    .class-block::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,180,180,0.05) 0%, transparent 60%);
+      pointer-events: none; z-index: 1;
+    }
+
+    /* Course code, classroom, end time */
+    .class-text {
+      font-size: 9pt; line-height: 1.2;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; z-index: 3;
+    }
+    .classroom {
+      display: block;
+      font-size: 8pt; font-weight: 400;
+      color: rgba(255, 255, 255, 0.45);
+      margin-top: 2px;
+    }
+    .end-time {
+      display: block;
+      font-size: 7pt; font-weight: 400;
+      color: rgba(255, 255, 255, 0.28);
+      margin-top: 1px;
+    }
+
+    /* ── COLOR DEFINITIONS ───────────────────────────── */
+    /* Controls the left bar color and the course list dot */
+    /* To add a new color: copy a line and change the name */
+
+    .class-block.Blue::before,   .course-list-dot.Blue   { background: #088fdb; }
+    .class-block.Purple::before, .course-list-dot.Purple { background: #db04e0; }
+    .class-block.Green::before,  .course-list-dot.Green  { background: #08fd5a; }
+    .class-block.Orange::before, .course-list-dot.Orange { background: #ffa201; }
+    .class-block.Red::before,    .course-list-dot.Red    { background: #fb0845; }
+    .class-block.White::before,  .course-list-dot.White  { background: #ffffff; }
+    .class-block.Yellow::before, .course-list-dot.Yellow { background: #fdf204; }
+
+    /* ── COURSE LIST (bottom panel) ──────────────────── */
+    .course-list-wrapper {
+      margin-top: 6mm;
+      display: flex; justify-content: center;
+    }
+    .course-list {
+      display: inline-grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 5px 24px;
+      padding: 10px 16px;
+      font-size: 8.5pt;
+      background: rgba(35, 15, 15, 0.25);
+      backdrop-filter: blur(4px) saturate(1.2);
+      -webkit-backdrop-filter: blur(4px) saturate(1.2);
+      border: 1px solid rgba(255, 120, 120, 0.12);
+      border-radius: 10px;
+    }
+    .course-list-item {
+      display: flex; align-items: center;
+      gap: 7px; line-height: 1.3;
+    }
+    .course-list-dot {
+      width: 12px; height: 12px;
+      border-radius: 3px; flex-shrink: 0;
+    }
+
+    /* ── PRINT ───────────────────────────────────────── */
+    @media print {
+      .class-block { box-shadow: none; }
+    }
+
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Background blueprint grid -->
+  <svg id="background-grid" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="small-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,180,180,0.04)" stroke-width="0.5"/>
+      </pattern>
+      <pattern id="large-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+        <rect width="100" height="100" fill="url(#small-grid)"/>
+        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,180,180,0.09)" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#large-grid)"/>
+  </svg>
+
+  <div class="content-wrapper">
+
+    <!-- ── PAGE TITLE ─────────────────────────────────── -->
+    <div class="title-row">
+      <div class="title">Psychosocial</div>
+    </div>
+
+    <!-- ── SCHEDULE ───────────────────────────────────── -->
+    <div class="schedule">
+
+      <!-- Day labels  (grid-column: 2=Mon 3=Tue 4=Wed 5=Thu 6=Fri) -->
+      <div class="day-label" style="grid-column:2; grid-row:1">Monday</div>
+      <div class="day-label" style="grid-column:3; grid-row:1">Tuesday</div>
+      <div class="day-label" style="grid-column:4; grid-row:1">Wednesday</div>
+      <div class="day-label" style="grid-column:5; grid-row:1">Thursday</div>
+      <div class="day-label" style="grid-column:6; grid-row:1">Friday</div>
+
+      <!-- Time labels  (grid-row: 2=08:30 … 12=18:30) -->
+      <div class="time-label" style="grid-column:1; grid-row:2">08:30</div>
+      <div class="time-label" style="grid-column:1; grid-row:3">09:30</div>
+      <div class="time-label" style="grid-column:1; grid-row:4">10:30</div>
+      <div class="time-label" style="grid-column:1; grid-row:5">11:30</div>
+      <div class="time-label" style="grid-column:1; grid-row:6">12:30</div>
+      <div class="time-label" style="grid-column:1; grid-row:7">13:30</div>
+      <div class="time-label" style="grid-column:1; grid-row:8">14:30</div>
+      <div class="time-label" style="grid-column:1; grid-row:9">15:30</div>
+      <div class="time-label" style="grid-column:1; grid-row:10">16:30</div>
+      <div class="time-label" style="grid-column:1; grid-row:11">17:30</div>
+      <div class="time-label" style="grid-column:1; grid-row:12">18:30</div>
+
+      <!-- ── CLASS BLOCKS ─────────────────────────────── -->
+      <!-- Format: class="class-block COLOR"  grid-column=DAY  grid-row=TIME -->
+
+      <!-- Monday -->
+      <div class="class-block Green"  style="grid-column:2; grid-row:4"><div class="class-text">PSKL358<div class="classroom">CL 219</div><span class="end-time">ends 11:20</span></div></div>
+      <div class="class-block Green"  style="grid-column:2; grid-row:5"><div class="class-text">PSKL358<div class="classroom">CL 219</div><span class="end-time">ends 12:20</span></div></div>
+      <div class="class-block Orange" style="grid-column:2; grid-row:8"><div class="class-text">ILET223<div class="classroom">CL 304</div><span class="end-time">ends 15:20</span></div></div>
+      <div class="class-block Orange" style="grid-column:2; grid-row:9"><div class="class-text">ILET223<div class="classroom">CL 304</div><span class="end-time">ends 16:20</span></div></div>
+      <div class="class-block Orange" style="grid-column:2; grid-row:10"><div class="class-text">ILET223<div class="classroom">CL 304</div><span class="end-time">ends 17:20</span></div></div>
+
+      <!-- Tuesday -->
+      <div class="class-block Blue"   style="grid-column:3; grid-row:2"><div class="class-text">ILET321<div class="classroom">CL 210</div><span class="end-time">ends 09:20</span></div></div>
+      <div class="class-block Blue"   style="grid-column:3; grid-row:3"><div class="class-text">ILET321<div class="classroom">CL 210</div><span class="end-time">ends 10:20</span></div></div>
+      <div class="class-block Blue"   style="grid-column:3; grid-row:4"><div class="class-text">ILET321<div class="classroom">CL 210</div><span class="end-time">ends 11:20</span></div></div>
+      <div class="class-block Purple" style="grid-column:3; grid-row:6"><div class="class-text">PSKL441<div class="classroom">CL 105</div><span class="end-time">ends 13:20</span></div></div>
+      <div class="class-block Red"    style="grid-column:3; grid-row:9"><div class="class-text">PSKL456<div class="classroom">CL 107</div><span class="end-time">ends 16:20</span></div></div>
+      <div class="class-block Yellow" style="grid-column:3; grid-row:10"><div class="class-text">BTBS150<div class="classroom">Online</div><span class="end-time">ends 17:20</span></div></div>
+      <div class="class-block Yellow" style="grid-column:3; grid-row:11"><div class="class-text">BTBS150<div class="classroom">Online</div><span class="end-time">ends 18:20</span></div></div>
+      <div class="class-block Yellow" style="grid-column:3; grid-row:12"><div class="class-text">BTBS150<div class="classroom">Online</div><span class="end-time">ends 19:20</span></div></div>
+
+      <!-- Wednesday -->
+      <div class="class-block Red"    style="grid-column:4; grid-row:2"><div class="class-text">PSKL456<div class="classroom">CL 202</div><span class="end-time">ends 09:20</span></div></div>
+      <div class="class-block Red"    style="grid-column:4; grid-row:3"><div class="class-text">PSKL456<div class="classroom">CL 202</div><span class="end-time">ends 10:20</span></div></div>
+
+      <!-- Thursday -->
+      <div class="class-block Green"  style="grid-column:5; grid-row:2"><div class="class-text">PSKL358<div class="classroom">CL 101</div><span class="end-time">ends 09:20</span></div></div>
+
+      <!-- Friday -->
+      <div class="class-block Purple" style="grid-column:6; grid-row:2"><div class="class-text">PSKL441<div class="classroom">CL 108</div><span class="end-time">ends 09:20</span></div></div>
+      <div class="class-block Purple" style="grid-column:6; grid-row:3"><div class="class-text">PSKL441<div class="classroom">CL 108</div><span class="end-time">ends 10:20</span></div></div>
+      <div class="class-block White"  style="grid-column:6; grid-row:10"><div class="class-text">Slipknot<div class="classroom">Ramen/Prime</div></div></div>
+
+    </div>
+
+    <!-- ── COURSE LIST ─────────────────────────────────── -->
+    <!-- Each line: course-list-dot COLOR = colored dot on the left -->
+    <div class="course-list-wrapper">
+      <div class="course-list">
+        <div class="course-list-item"><div class="course-list-dot Blue"></div>ILET321 - Kültürlerarası İletişim Becerileri</div>
+        <div class="course-list-item"><div class="course-list-dot Orange"></div>ILET223 - Communication and Creativity</div>
+        <div class="course-list-item"><div class="course-list-dot Green"></div>PSKL358 - LGBTI Psychology</div>
+        <div class="course-list-item"><div class="course-list-dot Purple"></div>PSKL441 - Clinical Psychology</div>
+        <div class="course-list-item"><div class="course-list-dot Red"></div>PSKL456 - Health Psychology</div>
+        <div class="course-list-item"><div class="course-list-dot Yellow"></div>BTBS150 - Information and Communication Technologies</div>
+        <div class="course-list-item"><div class="course-list-dot White"></div>Slipknot - Ramen/Prime</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
